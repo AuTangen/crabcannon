@@ -15,26 +15,17 @@ const SceneLogin = ({ navigation }) => {
         password: ''
     })
 
-    useEffect(() => {
-        setTimeout(() => {
-            navigation.navigate('Login')
-        }, 2000)
-    }, [])
 
-    // const handleChange = (event) => {
-    //     console.log('called')
-    //     console.log('event' + event.target)
-    //     const prop = event.target.id
-    //     setFormState({
-    //         ...formState,
-    //         [prop]: event.target.value
-    //     });
-    // }
-
+ 
 
     const submitLogin = () => {
         console.log(formState.user)
     }
+
+    const returnMain = () => {
+        navigation.navigate('Auth')
+    }
+
     return (
         <DefaultPage>
             <Text>
@@ -71,6 +62,10 @@ const SceneLogin = ({ navigation }) => {
                 onPress={submitLogin}
             />
             </Text>
+            <Button
+                title="Return To Main Screen"
+                onPress={returnMain}
+            />
         </DefaultPage>
     )
 }

@@ -17,16 +17,6 @@ const SceneRegister = ({ navigation }) => {
 
    
 
-    // const handleChange = (event) => {
-    //     console.log('called')
-    //     console.log('event' + event.target)
-    //     const prop = event.target.id
-    //     setFormState({
-    //         ...formState,
-    //         [prop]: event.target.value
-    //     });
-    // }
-
 
     const submitLogin = () => {
         console.log(formState.user)
