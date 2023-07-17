@@ -1,0 +1,19 @@
+{
+  "name": "crabcannon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node ./server/server.js",
+    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm run web\"",
+    "install:client": "cd ./client && npm i",
+    "install:server": "cd ./server && npm i",
+    "install": "npm run install:client && npm run install:server",
+    "seed-prod": "set NODE_ENV=production && cd server && npm run seed",
+    "seed": "cd server && npm run seed",
+    "build": "cd ./client && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

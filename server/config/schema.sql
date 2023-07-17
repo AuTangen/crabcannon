@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS crab_cannonDB;
+CREATE DATABASE crab_cannonDB;
