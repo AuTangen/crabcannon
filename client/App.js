@@ -1,12 +1,27 @@
+import React from 'react';
+import { useEffect, useState } from "react";
+import axios from 'axios'
+
+import { enableScreens } from 'react-native-screens';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Navigation from './components/Navigation'
 
-export default function App() {
+enableScreens();
+
+function App(props) {
+
+  
+  const [user, setUser] = useState(null)
+
+useEffect(() => {
+  axios.get('/auth/authenticated').then(res => {
+    setUser(res.data.user)
+  })
+}, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Navigation user={user} setUser={setUser}/>
   );
 }
 
@@ -18,3 +33,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
