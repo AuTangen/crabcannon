@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#ddd',
+        backgroundColor: 'lightskyblue',
     },
     scroller: {
         flexGrow: 1,

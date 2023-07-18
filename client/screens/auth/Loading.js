@@ -11,7 +11,10 @@ const SceneLoading = ({ navigation }) => {
     }, [])
     return (
         <DefaultPage>
-            <Text>
+            <Text style= {{
+                fontSize: '30px',
+                color: 'white'
+            }}>
                 loading...
             </Text>
         </DefaultPage>

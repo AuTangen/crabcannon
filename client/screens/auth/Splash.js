@@ -11,8 +11,17 @@ const SceneSplash = ({ navigation }) => {
     }, [])
     return (
         <DefaultPage>
-            <Text>
-                Splash
+            <Text style= {{
+                fontSize: '56px',
+                color: 'white'
+            }}>
+                Crab Rangoon:
+            </Text>
+            <Text style= {{
+                fontSize: '48px',
+                color: 'white'
+            }}>
+                The Game
             </Text>
         </DefaultPage>
     )

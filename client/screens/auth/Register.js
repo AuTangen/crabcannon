@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const SceneRegister = () => {
 
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
 
     const [formState, setFormState] = useState({
         username: '',

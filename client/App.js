@@ -15,6 +15,8 @@ import SceneLogin from './screens/auth/Login'
 import SceneRegister from './screens/auth/Register'
 import SceneAuth from './screens/auth/Auth'
 import SceneHome from './screens/auth/Home'
+import SceneGame from './screens/game/CrabRangoon'
+
 
 
 enableScreens();
@@ -22,6 +24,8 @@ const Stack = createStackNavigator()
 
 
 function App(props) {
+
+  
 
   // const [user, setUser] = useState(null)
 
@@ -44,6 +48,8 @@ function App(props) {
        <Stack.Screen name="signup" component={SceneRegister}  />
        <Stack.Screen name="login" component={SceneLogin} />
        <Stack.Screen name="home" component={SceneHome}  />
+       <Stack.Screen name="CrabRangoon" component={SceneGame}  />
+
        
    </Stack.Navigator>
 </NavigationContainer>

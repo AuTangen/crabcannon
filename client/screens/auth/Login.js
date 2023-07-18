@@ -8,7 +8,7 @@ import DefaultPage from '../../components/DefaultPage'
 
 const SceneLogin = ({navigation}) => {
 
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState(null)
 
     const [formState, setFormState] = useState({
         email: '',
@@ -76,7 +76,7 @@ const SceneLogin = ({navigation}) => {
                 value={formState.password}
             />
             <Button
-                title="Press me"
+                title="Login In"
                 onPress={submitLogin}
             />
             </Text>
