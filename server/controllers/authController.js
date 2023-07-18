@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
 
   req.session.user_id = user.id;
 
-  res.redirect('/dashboard');
+  res.send(user);
 });
 
 router.post('/signup', async (req, res) => {
@@ -29,11 +29,32 @@ router.post('/signup', async (req, res) => {
     const user = await User.create(user_data);
     console.log(user)
     req.session.user_id = user.id;
-    res.redirect('/dashboard');
+    console.log("userID" + req.session.user_id)
+    res.send(user)
+    // res.redirect('/home');
   } catch (err) {
-    res.redirect('/login');
+    console.log(err)
+    console.log(req.body)
+    // res.redirect('/home');
   }
 });
+
+router.get('/authenticated', async (req, res) => {
+  const user_id = req.session.user_id;
+  const user_data = req.body;
+
+
+  if (!user_id) return res.send({user: null})
+
+  const user =await User.findOne({
+    where: {
+      id: user_id
+    }
+  });
+  
+  console.log(user)
+  res.send({ user: user })
+})
 
 router.get('/auth/logout', (req, res) => {
   req.session.destroy();

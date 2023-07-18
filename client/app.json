@@ -3,6 +3,7 @@
     "name": "CrabCannon",
     "slug": "CrabCannon",
     "version": "1.0.0",
+    "proxy": "http://localhost:3001",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

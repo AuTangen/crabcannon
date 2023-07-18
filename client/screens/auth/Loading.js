@@ -6,7 +6,7 @@ import DefaultPage from '../../components/DefaultPage'
 const SceneLoading = ({ navigation }) => {
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate('Auth')
+            navigation.navigate('auth')
         }, 3000)
     }, [])
     return (

@@ -4,6 +4,7 @@
   "proxy": "http://localhost:3001",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "proxy": "http://localhost:3001",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -16,7 +17,9 @@
     "axios": "^1.4.0",
     "expo": "~48.0.18",
     "expo-status-bar": "~1.4.4",
+    "http-proxy-middleware": "^2.0.6",
     "react": "18.2.0",
+    "react-admin": "^4.12.1",
     "react-dom": "18.2.0",
     "react-native": "0.71.8",
     "react-native-screens": "^3.20.0",

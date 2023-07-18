@@ -2,28 +2,49 @@ import React, { useEffect, useState } from 'react'
 
 import axios from 'axios'
 
+
 import { Text, TextInput, Button } from 'react-native'
 import PropTypes from 'prop-types'
 import DefaultPage from '../../components/DefaultPage'
+import { useNavigation } from '@react-navigation/native'
 
-const SceneRegister = ({ navigation }) => {
+const SceneRegister = () => {
 
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState({})
 
     const [formState, setFormState] = useState({
-        user: '',
+        username: '',
+        email: '',
         password: ''
     })
 
-   
+    const navigation = useNavigation()
+
+    useEffect(() => {
+       if (user) {
+        console.log(user);
+        navigation.navigate('home', {user: user})
+    }
+      }, [user]);
 
 
-    const submitLogin = () => {
-        console.log(formState.user)
+    const submitLogin = async () => {
+        
+        try {
+            const res = await axios.post('http://localhost:3001/auth/signup', formState);
+            console.log(res.data)
+            setUser(res.data)
+            console.log(user)
+            
+        } catch (err) {
+            if (err.code === 402) {
+                console.log(err)
+            }
+        }
     }
 
 const returnMain = () => {
-    navigation.navigate('Auth')
+    navigation.navigate('auth')
 }
 
     return (
@@ -40,9 +61,21 @@ const returnMain = () => {
                 }}
                 onChangeText={(text) => setFormState({
                     ...formState,
-                    user: text
+                    username: text
                 })}
-                value={formState.user}
+                value={formState.username}
+            />
+              <TextInput
+            id='email'
+            placeholder='Enter email address'
+                style={{
+                    height: 50, width: 200, borderColor: 'gray', borderWidth: 3, padding: 10, margin: 10,
+                }}
+                onChangeText={(text) => setFormState({
+                    ...formState,
+                    email: text
+                })}
+                value={formState.email}
             />
              <TextInput 
              id='password'

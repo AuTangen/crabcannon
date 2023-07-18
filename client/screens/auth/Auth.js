@@ -1,17 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, Button } from 'react-native'
+import axios from 'axios'
+
 import PropTypes from 'prop-types'
 import DefaultPage from '../../components/DefaultPage'
 
 const SceneAuth = ({ navigation }) => {
 
     const navigateLogin = () => {
-        navigation.navigate('Login')
+        navigation.navigate('login')
     }
 
     const navigateRegister = () => {
-        navigation.navigate('Register')
+        navigation.navigate('signup')
     }
+
+   
+  
 
     return (
         <DefaultPage>
@@ -26,6 +31,7 @@ const SceneAuth = ({ navigation }) => {
                 title="SignUp"
                 onPress={navigateRegister}
             />
+
         </DefaultPage>
     )
 }

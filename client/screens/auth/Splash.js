@@ -6,7 +6,7 @@ import DefaultPage from '../../components/DefaultPage'
 const SceneSplash = ({ navigation }) => {
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate('Loading')
+            navigation.navigate('loading')
         }, 2000)
     }, [])
     return (

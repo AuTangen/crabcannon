@@ -6,24 +6,42 @@ import { Text, TextInput, Button } from 'react-native'
 import PropTypes from 'prop-types'
 import DefaultPage from '../../components/DefaultPage'
 
-const SceneLogin = ({ navigation }) => {
+const SceneLogin = ({navigation}) => {
 
     const [user, setUser] = useState("")
 
     const [formState, setFormState] = useState({
-        user: '',
+        email: '',
         password: ''
     })
 
+    useEffect(() => {
+        if (user) {
+         console.log(user);
+         navigation.navigate('home', {user: user})
+     }
+       }, [user]);
 
  
-
-    const submitLogin = () => {
-        console.log(formState.user)
+    const submitLogin = async () => {
+        
+        try {
+            const res = await axios.post('http://localhost:3001/auth/login', formState);
+            console.log(res.data)
+            setUser(res.data)
+            console.log(user)
+            
+        } catch (err) {
+            if (err.code === 402) {
+                console.log(err)
+            }
+        }
     }
 
+
+
     const returnMain = () => {
-        navigation.navigate('Auth')
+        navigation.navigate('auth')
     }
 
     return (
@@ -33,16 +51,16 @@ const SceneLogin = ({ navigation }) => {
                 Login
             </Text>
             <TextInput
-            id='username'
-            placeholder='Enter username'
+            id='email'
+            placeholder='Enter email'
                 style={{
                     height: 50, width: 200, borderColor: 'gray', borderWidth: 3, padding: 10, margin: 10,
                 }}
                 onChangeText={(text) => setFormState({
                     ...formState,
-                    user: text
+                    email: text
                 })}
-                value={formState.user}
+                value={formState.email}
             />
              <TextInput 
              id='password'

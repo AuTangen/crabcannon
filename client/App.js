@@ -5,23 +5,48 @@ import axios from 'axios'
 import { enableScreens } from 'react-native-screens';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Navigation from './components/Navigation'
+// import Navigation from './components/Navigation'
+
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import SceneSplash from './screens/auth/Splash'
+import SceneLoading from './screens/auth/Loading'
+import SceneLogin from './screens/auth/Login'
+import SceneRegister from './screens/auth/Register'
+import SceneAuth from './screens/auth/Auth'
+import SceneHome from './screens/auth/Home'
+
 
 enableScreens();
+const Stack = createStackNavigator()
+
 
 function App(props) {
 
-  
-  const [user, setUser] = useState(null)
+  // const [user, setUser] = useState(null)
 
-useEffect(() => {
-  axios.get('/auth/authenticated').then(res => {
-    setUser(res.data.user)
-  })
-}, []);
+  // useEffect(() => {
+  //   axios.get('http://localhost:3000/auth/authenticated').then(res => {
+  //     setUser(res.data.username)
+  //     console.log(res.data)
+  //   })
+
+  // }, []);
+  
 
   return (
-    <Navigation user={user} setUser={setUser}/>
+    <NavigationContainer>
+       
+    <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }} >
+       <Stack.Screen name="splash" component={SceneSplash} />
+       <Stack.Screen name="loading" component={SceneLoading} />
+       <Stack.Screen name="auth" component={SceneAuth} />
+       <Stack.Screen name="signup" component={SceneRegister}  />
+       <Stack.Screen name="login" component={SceneLogin} />
+       <Stack.Screen name="home" component={SceneHome}  />
+       
+   </Stack.Navigator>
+</NavigationContainer>
   );
 }
 
