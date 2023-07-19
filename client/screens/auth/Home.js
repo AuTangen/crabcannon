@@ -4,9 +4,18 @@ import PropTypes from 'prop-types'
 import DefaultPage from '../../components/DefaultPage'
 import title from '../../assets/sprites/title.png'
 import subtitle from '../../assets/sprites/subtitle.png'
+import intromusic from '../../assets/music/intromusic.mp3'
 
 
 const SceneHome = ({navigation, route}) => {
+
+    useEffect(() => {
+        play()
+      },[])
+    
+      function play() {
+        new Audio(intromusic).play()
+      }
     
     console.log(route.params)
     const [user, setUser] = useState(route.params.user)
@@ -27,7 +36,7 @@ const SceneHome = ({navigation, route}) => {
             <Text style= {{
                 fontSize: '30px',
                 color: 'white'
-            }}>Welcome Back, {user.username}</Text>
+            }}>Welcome Back {user.username}</Text>
             <Button
                 title="PLAY"
                 onPress={PLAY}

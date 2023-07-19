@@ -4,7 +4,8 @@ import axios from 'axios'
 
 import { enableScreens } from 'react-native-screens';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native'
+
 // import Navigation from './components/Navigation'
 
 import { NavigationContainer } from '@react-navigation/native'
@@ -16,7 +17,7 @@ import SceneRegister from './screens/auth/Register'
 import SceneAuth from './screens/auth/Auth'
 import SceneHome from './screens/auth/Home'
 import SceneGame from './screens/game/CrabRangoon'
-import intromusic from './assets/music/intromusic.mp3'
+
 
 
 enableScreens();
@@ -25,13 +26,9 @@ const Stack = createStackNavigator()
 
 function App(props) {
 
-  useEffect(() => {
-    play()
-  },[])
 
-  function play() {
-    new Audio(intromusic).play()
-  }
+
+
 
   // const [user, setUser] = useState(null)
 
@@ -42,7 +39,7 @@ function App(props) {
   //   })
 
   // }, []);
-  
+ 
 
   return (
     <NavigationContainer>
