@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Text, TouchableOpacity, Button } from 'react-native'
+import { Text, TouchableOpacity, Button, Image } from 'react-native'
 import PropTypes from 'prop-types'
 import DefaultPage from '../../components/DefaultPage'
+import title from '../../assets/sprites/title.png'
+import subtitle from '../../assets/sprites/subtitle.png'
+
 
 const SceneHome = ({navigation, route}) => {
     
@@ -16,12 +19,11 @@ const SceneHome = ({navigation, route}) => {
 
     return (
         <DefaultPage>
-            <Text style= {{
-                fontSize: '48px',
-                color: 'white'
-            }}>
-                Crab Rangoon: The Game
-            </Text>
+<Image source={title}style={{width:350, height: 40}}/>
+<Image source={subtitle}style={{width:230, height: 20}}/>
+
+
+           
             <Text style= {{
                 fontSize: '30px',
                 color: 'white'

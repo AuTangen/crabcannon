@@ -12,12 +12,13 @@ const DefaultPage = ({ children }) => (
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        height: '100%',
+        width: '100vw',
+        height: '100vh',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'lightskyblue',
+        overflow: 'none'
     },
     scroller: {
         flexGrow: 1,

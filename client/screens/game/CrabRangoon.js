@@ -26,7 +26,8 @@ style={{
     left: 0,
     right: 0, 
     bottom: 0,
-    backgroundColor: 'lightskyblue'
+    backgroundColor: 'lightskyblue',
+    overflow: 'hidden'
     
 }}>
 
