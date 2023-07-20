@@ -35,9 +35,14 @@ const Physics = (entities, {touches, time, dispatch}) => {
         console.log('click!')
         Matter.Body.setVelocity(entities.Crab.body, {
             x:0,
-            y: -8
+            y: -6
         })
     });
+
+
+    // translate or move the obstacles to the left of the screen, when they reach the edge or the screen re-render them with new hieght params
+
+    // *** add if statement for window width and scale speed accordingly!!
 
 
     Matter.Engine.update(engine, time.delta)

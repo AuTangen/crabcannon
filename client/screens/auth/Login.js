@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react'
 
 import axios from 'axios'
 
-import { Text, TextInput, Button } from 'react-native'
+import { Text, TextInput, Button, Platform } from 'react-native'
 import PropTypes from 'prop-types'
 import DefaultPage from '../../components/DefaultPage'
+
+// const API_URL = Platform.OS === 'ios' ? 'http://localhost:3001' : 'http://10.0.2.2:3001';
+
+const API_URL = 'http://localhost:3001'
+
 
 const SceneLogin = ({navigation}) => {
 
@@ -26,7 +31,7 @@ const SceneLogin = ({navigation}) => {
     const submitLogin = async () => {
         
         try {
-            const res = await axios.post('http://localhost:3001/auth/login', formState);
+            const res = await axios.post(`${API_URL}/auth/login`, formState);
             console.log(res.data)
             setUser(res.data)
             console.log(user)

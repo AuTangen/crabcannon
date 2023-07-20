@@ -9,6 +9,7 @@ import slingshot from '../components/Slingshot'
 
 import { Dimensions } from 'react-native'
 import { getPipeSizePosPair } from '../utils/random'
+import Rangoon from '../components/Rangoon'
 
 var windowHeight = Dimensions.get('window').height
 var windowWidth = Dimensions.get('window').width
@@ -33,7 +34,10 @@ export default restart => {
     return {
         physics: {engine, world},
 
-        Crab: Crab(world, 'green', {x:200, y:200}, {height:40, width:60}),
+        Crab: Crab(world, 'green', {x:200, y:windowHeight/2}, {height:40, width:60}),
+
+        Rangoon: Rangoon(world, 'green', {x:500, y:windowHeight/2}, {height:80, width:100}),
+
 
         ObstacleTop1: Obstacle(world, 'ObstacleTop1', 'red', pipeSizePosA.pipeTop.pos, pipeSizePosA.pipeTop.size),
         ObstacleBottom1: Obstacle(world, 'ObstacleBottom1', 'red', pipeSizePosA.pipeBottom.pos, pipeSizePosA.pipeBottom.size),

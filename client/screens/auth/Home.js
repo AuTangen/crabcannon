@@ -18,12 +18,12 @@ const SceneHome = ({navigation, route}) => {
       }
     
     console.log(route.params)
-    // const [user, setUser] = useState(route.params.user)
+    const [user, setUser] = useState(route.params.user)
 //    console.log(user)
  
 
    const PLAY = () => {
-    navigation.navigate('CrabRangoon')
+    navigation.navigate('CrabRangoon', {user: user})
 }
 // pass user param in navigate (, {user: user})
 
