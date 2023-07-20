@@ -25,13 +25,22 @@ export default restart => {
     let world = engine.world
 
     const pipeSizePosA = getPipeSizePosPair()
+    const pipeSizePosB = getPipeSizePosPair(windowWidth * 0.9)
+
 
     world.gravity.y = 0.4;
 
     return {
         physics: {engine, world},
+
         Crab: Crab(world, 'green', {x:200, y:200}, {height:40, width:60}),
+
         ObstacleTop1: Obstacle(world, 'ObstacleTop1', 'red', pipeSizePosA.pipeTop.pos, pipeSizePosA.pipeTop.size),
+        ObstacleBottom1: Obstacle(world, 'ObstacleBottom1', 'red', pipeSizePosA.pipeBottom.pos, pipeSizePosA.pipeBottom.size),
+
+        ObstacleTop2: Obstacle(world, 'ObstacleTop2', 'red', pipeSizePosB.pipeTop.pos, pipeSizePosB.pipeTop.size),
+        ObstacleBottom2: Obstacle(world, 'ObstacleBottom2', 'red', pipeSizePosB.pipeBottom.pos, pipeSizePosB.pipeBottom.size),
+
         Floor: Floor(world, 'burlywood', {x:windowWidth/2, y:windowHeight}, {height:80, width:windowWidth}),
         slingshot: slingshot
 

@@ -18,13 +18,14 @@ const SceneHome = ({navigation, route}) => {
       }
     
     console.log(route.params)
-    const [user, setUser] = useState(route.params.user)
-   console.log(user)
+    // const [user, setUser] = useState(route.params.user)
+//    console.log(user)
  
 
    const PLAY = () => {
-    navigation.navigate('CrabRangoon', {user: user})
+    navigation.navigate('CrabRangoon')
 }
+// pass user param in navigate (, {user: user})
 
     return (
         <DefaultPage>
@@ -33,10 +34,10 @@ const SceneHome = ({navigation, route}) => {
 
 
            
-            <Text style= {{
+            {/* <Text style= {{
                 fontSize: '30px',
                 color: 'white'
-            }}>Welcome Back {user.username}</Text>
+            }}>Welcome Back {user.username}</Text> */}
             <Button
                 title="PLAY"
                 onPress={PLAY}
