@@ -1,7 +1,7 @@
 import Matter from "matter-js"
 import React, { useState, useEffect } from 'react'
 import jumpSound from './assets/music/jump.mp3'
-import { getPipeSizePosPair } from "./utils/random"
+import { getPipeSizePosPair, getRangoonPos } from "./utils/random"
 
 import { Dimensions } from 'react-native'
 
@@ -48,6 +48,8 @@ const Physics = (entities, {touches, time, dispatch}) => {
     Matter.Engine.update(engine, time.delta)
  for(let i = 1; i <= 2; i++){
 
+
+
     if (entities[`ObstacleTop${i}`].body.bounds.max.x <= 0) {
             const pipeSizePos = getPipeSizePosPair(windowWidth * 0.9);
             Matter.Body.setPosition(entities[`ObstacleTop${i}`].body, pipeSizePos.pipeTop.pos)
@@ -57,6 +59,39 @@ const Physics = (entities, {touches, time, dispatch}) => {
     Matter.Body.translate(entities[`ObstacleBottom${i}`].body, {x: -3, y:0 })
  }
   
+// move rangoon to edge of screen
+
+if (entities.Rangoon.body.bounds.max.x <= 0) {
+    const rangoonPos = getRangoonPos(windowWidth * 0.9);
+    Matter.Body.scale(entities.Rangoon.body, 1, 1);
+    Matter.Body.setPosition(entities.Rangoon.body, rangoonPos)
+    
+}
+Matter.Body.translate(entities.Rangoon.body, {x: -3, y:0 })
+
+
+// checks collision between two specific objects!!
+
+if (Matter.Collision.collides(entities.ObstacleTop1.body, entities.Crab.body) != null) {
+    dispatch({type: 'game_over'})
+}
+if (Matter.Collision.collides(entities.ObstacleTop2.body, entities.Crab.body) != null) {
+    dispatch({type: 'game_over'})
+}
+if (Matter.Collision.collides(entities.ObstacleBottom1.body, entities.Crab.body) != null) {
+    dispatch({type: 'game_over'})
+}
+if (Matter.Collision.collides(entities.ObstacleBottom2.body, entities.Crab.body) != null) {
+    dispatch({type: 'game_over'})
+}
+
+if (Matter.Collision.collides(entities.Rangoon.body, entities.Crab.body) != null) {
+    dispatch({type: 'add_point'})
+    Matter.Body.scale(entities.Rangoon.body, 0.2, 0.2);
+
+}
+
+
 
 
     return entities

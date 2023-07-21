@@ -16,7 +16,18 @@ const SceneGame = ({ navigation, route }) => {
 
 const [running, setRunning] = useState(false)
 
+const [gameEngine, setGameEngine] = useState(null)
+
+const [points, setPoints] = useState(0)
+
 const [pause, setPause] = useState(false)
+
+const [gameOver, setGameOver] = useState(false)
+
+
+const handleGameOver = () => {
+    setGameOver(true)
+}
 
 const handleMessage = () => {
     setShowMessage(false)
@@ -96,12 +107,44 @@ const handleQuit = () => {
        
         </Popup>
      )}
+
+{gameOver && (
+        <Popup>
+        <Text style={{
+            zIndex: 2,
+            color: 'white',
+            fontSize: '32px'
+
+        }}>Game Over</Text>
+        <Button
+        title="Restart"
+        onPress={handleResume}></Button> 
+          <Button
+        title="Quit"
+        onPress={handleQuit}></Button>
+        </Popup>
+     )}
+
+
 <GameEngine
 
-
+ref={(ref) => {setGameEngine(ref)}}
 systems={[Physics]}
 entities={entities()}
 running={running}
+onEvent={(e) => {
+    switch(e.type) {
+        case 'game_over':
+            setRunning(false)
+            gameEngine.stop()
+            setPoints(0)
+            handleGameOver()
+            break;
+    
+    case 'add_point': 
+    setPoints(points + 1)
+    }
+}}
 style={{
     position: 'absolute',
     top: 0,
